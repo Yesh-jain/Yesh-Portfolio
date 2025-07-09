@@ -8,10 +8,14 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <audio id="clickSound" src="click.mp3" preload="auto"></audio>
+
+  <div class="welcome-banner">👋 Welcome to My World!</div>
+
   <div class="container">
     <nav>
       <div class="logo">Yesh.</div>
-      <ul>
+      <ul id="navbar">
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -25,15 +29,15 @@
       <h1>Hi, I'm <span>Yesh Jain</span></h1>
     </div>
 
-    <section id="about" class="fade-in">
+    <section id="about">
       <h2 class="sub-title">About Me</h2>
       <div class="row">
         <div><img src="Yesh-Jain-PASSPORT SIZE PHOTO.jpeg" alt="Profile Picture" /></div>
-        <div><p>I am a Computer Science student specializing in Data Science. I build full-stack applications using Java, Spring Boot, React, and MERN stack. I love solving real-world problems through code and collaboration.</p></div>
+        <div><p>I am a Computer Science student specializing in Data Science. I build full-stack applications using Java, Spring Boot, React, and the MERN stack.</p></div>
       </div>
     </section>
 
-    <section id="experience" class="fade-in">
+    <section id="experience">
       <h2 class="sub-title">Experience</h2>
       <ul>
         <li><strong>Zidio (2025-Present):</strong> MERN stack dashboard with role-based auth & APIs.</li>
@@ -41,13 +45,13 @@
       </ul>
     </section>
 
-    <section id="projects" class="fade-in">
+    <section id="projects">
       <h2 class="sub-title">Projects</h2>
       <p><strong>CitySync:</strong> Smart urban planning forum using Spring Boot + MySQL.<br>
          <a href="https://github.com/Yesh-jain/CitySync" target="_blank">GitHub Link</a></p>
     </section>
 
-    <section id="skills" class="fade-in">
+    <section id="skills">
       <h2 class="sub-title">Skills</h2>
       <ul class="skills-list">
         <li>Java</li><li>Spring Boot</li><li>React.js</li><li>Node.js</li>
@@ -55,15 +59,51 @@
       </ul>
     </section>
 
-    <section id="contact" class="fade-in">
+    <section id="contact">
       <h2 class="sub-title">Contact</h2>
       <p>Email: <a href="mailto:yesh6263@gmail.com">yesh6263@gmail.com</a></p>
+      <p>Phone: +91-6263702646</p>
       <p>LinkedIn: <a href="https://linkedin.com/in/yesh-jain">linkedin.com/in/yesh-jain</a></p>
+
+      <form onsubmit="event.preventDefault(); alert('Message Sent!');">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" rows="4" placeholder="Your message..." required></textarea>
+        <button type="submit" onclick="playSound()">Send</button>
+      </form>
     </section>
 
     <footer>
       <p>© 2025 Yesh Jain. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    function playSound() {
+      document.getElementById('clickSound').play();
+    }
+
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) current = section.getAttribute('id');
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    document.querySelectorAll('a').forEach(el => {
+      el.addEventListener('click', () => playSound());
+    });
+  </script>
 </body>
 </html>
