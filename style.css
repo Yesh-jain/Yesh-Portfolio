@@ -1,31 +1,33 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #080808;
   color: #fff;
   line-height: 1.6;
 }
 .container {
-  width: 80%;
+  width: 90%;
   margin: auto;
-  overflow: hidden;
-  padding: 30px 0;
+  padding: 20px 0;
 }
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1f1f1f;
   padding: 20px 0;
 }
-nav .logo {
-  font-size: 2rem;
-  color: #00ffff;
+.logo {
+  font-size: 24px;
+  color: cyan;
+  font-weight: bold;
 }
 nav ul {
   list-style: none;
@@ -35,47 +37,77 @@ nav ul {
 nav ul li a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 500;
+  transition: 0.3s;
+}
+nav ul li a:hover {
+  color: cyan;
 }
 .header-text {
-  padding: 100px 0;
+  margin-top: 10vh;
   text-align: center;
+  animation: fadeInDown 1s ease-out;
+}
+.header-text h1 {
+  font-size: 3rem;
 }
 .header-text h1 span {
-  color: #00ffff;
+  color: cyan;
 }
 .sub-title {
   font-size: 2rem;
+  color: cyan;
   margin-bottom: 20px;
-  color: #00ffff;
 }
-.about-col-1 img {
-  width: 100%;
-  max-width: 300px;
+img {
   border-radius: 10px;
+  max-width: 300px;
+  width: 100%;
 }
 .row {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-}
-.skills-list, .experience-list ul, .project-list ul {
-  list-style: disc;
-  padding-left: 20px;
+  align-items: center;
+  gap: 30px;
 }
 .skills-list li {
   display: inline-block;
-  background: #333;
-  padding: 10px 15px;
-  margin: 5px;
+  background-color: #1f1f1f;
+  padding: 10px 20px;
+  margin: 10px 5px;
   border-radius: 5px;
 }
 footer {
   text-align: center;
   padding: 20px;
   background-color: #1f1f1f;
+  color: #999;
   margin-top: 40px;
 }
 a {
-  color: #00ffff;
+  color: cyan;
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .header-text h1 {
+    font-size: 2rem;
+  }
+  .row {
+    flex-direction: column;
+    text-align: center;
+  }
 }
